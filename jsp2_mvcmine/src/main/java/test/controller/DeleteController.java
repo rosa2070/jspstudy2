@@ -32,20 +32,6 @@ public class DeleteController extends HttpServlet {
 	}
 	
 	
-	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
-		MemberDao dao = new MemberDao();
-		int n = dao.delete(id);
-		if (n == 1) {
-			req.setAttribute("msg", "회원가입 완료!!");
-		} else {
-			req.setAttribute("msg", "오류로 인해 회원가입 실패");
-		}
-		RequestDispatcher rd = req.getRequestDispatcher("/member/list.jsp");
-		rd.forward(req, resp);
-		
-		
-	}
+
 
 }

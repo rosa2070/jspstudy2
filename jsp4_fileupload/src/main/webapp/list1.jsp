@@ -15,23 +15,21 @@
 		<th>전송된 파일명</th>
 		<th>저장된 파일명</th>
 		<th>파일크기</th>
-		<th>삭제</th>		
-		<th>다운로드</th>
+		<th>이미지</th>		
 	</tr>
-	<c:forEach var="dto" items="${list }">
+	<c:forEach var="dto" items="${requestScope.list }">
 		<tr>
 			<td>${dto.filenum }</td>
 			<td>${dto.title }</td>
 			<td>${dto.orgfilename }</td>
 			<td>${dto.savefilename }</td>
 			<td>${dto.filesize }</td>
-			<td><a href="<%=request.getContextPath()%>/file/delete?filenum=${dto.filenum}">삭제</a>
-			<td><a href="<%=request.getContextPath() %>/file/download?filenum=${dto.filenum }">다운로드</a></td>
+			<td><img src="<%=request.getContextPath() %>/upload/${dto.savefilename}"></td>
 		</tr>
 	</c:forEach>
 </table>
 
-<img src="<%=request.getContextPath()%>/img/pooh.jpg">
+<img src="<%=request.getContextPath()%>/img/snoopy.jpg">
 <a href="<%=request.getContextPath()%>/main.jsp">메인페이지</a>
 </body>
 </html>

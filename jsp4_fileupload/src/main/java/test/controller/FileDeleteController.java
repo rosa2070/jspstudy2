@@ -30,7 +30,7 @@ public class FileDeleteController extends HttpServlet {
 			f.delete();
 			
 			// 2. db에서 삭제
-			dao.delete(filenum);
+			dao.delete(filenum);   
 			resp.sendRedirect(req.getContextPath() + "/file/list");
 			
 		} catch (Exception e) {

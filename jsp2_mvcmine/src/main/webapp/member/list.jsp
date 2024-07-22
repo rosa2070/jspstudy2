@@ -10,8 +10,13 @@
 <body>
 <table border="1" width="500">
 	<tr>
-		<th>아이디</th><th>비밀번호</th><th>이메일</th><th>나이</th><th>가입일</th>
-		<th>수정</th><th>삭제</th>
+		<th>아이디</th>
+		<th>비밀번호</th>
+		<th>이메일</th>
+		<th>나이</th>
+		<th>가입일</th>
+		<th>수정</th>
+		<th>삭제</th>
 	</tr>
 	<c:forEach var="vo" items="${requestScope.list }">
 		<tr>

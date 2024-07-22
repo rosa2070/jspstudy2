@@ -19,7 +19,9 @@ public class FileListController extends HttpServlet {
 		FileinfoDAO dao = new FileinfoDAO();
 		ArrayList<Fileinfo> list = dao.selectAll();
 		req.setAttribute("list", list);
-		req.getRequestDispatcher("/list.jsp").forward(req, resp);
+//		req.getRequestDispatcher("/list.jsp").forward(req, resp);
+		req.getRequestDispatcher("/list1.jsp").forward(req, resp);
+		
 		
 	}
 

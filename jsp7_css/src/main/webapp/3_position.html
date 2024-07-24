@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>3_position.html</title>
+<style type="text/css">
+	*{margin: 0px; padding: 0px}
+	#box div{width:200px; height: 200px; border: 2px solid green;}
+	/* #box에 임의 위치 지정해 보세요 */
+	#box { background-color: orange; position:absolute; left: 100px; height:100px;width:600px;height: 500px;}
+	/* position: absolute 절대위치값 설정 -> 부모기준 */
+	#d1 {background-color: pink; left: 50px; top: 100px; position: absolute; z-index:3}
+	#d2 {background-color: red; left: 230px; top: 120px; position: absolute; z-index:2}
+	#d3 {background-color: gray; left: 370px; top: 150px; position: absolute; z-index:1}
+</style>
+</head>
+<body>
+<div id="box">
+	<div id="d1">div1</div>
+	<div id="d2">div2</div>
+	<div id="d3">div3</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>1.html</title>
+<style type="text/css">
+	/* id속성이 d1인 요소에 적용 */
+	#d1{background-color: yellow;}
+	/* class속성이 d1인 요소에 적용 */
+	.d2{background-color: red; }
+	/* id속성이 d1인 요소의 자식요소중에 h1인 요소에 적용 */
+	#d1 h1 { color: blue;}
+	/* div요소중에 id속성이 d1인 요소에 적용 */
+	div#d1 { width: 300px;}
+</style>
+</head>
+<body>
+<!-- 첫번째 div의 배경색상을 변경해 보세요 -->
+<div id="d1">
+	<h1>아리랑1</h1>
+</div>
+<div class="d2"> <!-- 배경색을 빨간색으로 바꿔보세요 -->
+	<h1>아리랑2</h1>
+</div>
+<div class="d2">
+	<h1>아리랑3</h1>
+</div>
+</body>
+</html>

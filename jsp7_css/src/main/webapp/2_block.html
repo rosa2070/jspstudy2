@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>2_block</title>
+<style type="text/css">
+	.s1 {background-color: green; width: 600px;}
+	.s2 {display:block;background-color:orange;}
+	.s3 {display: inline-block;width:100px; background-color:blue;}
+	#box1 { background-color:pink; width: 500px; padding-left: 100px; padding-top: 100px;margin-left:200px;}
+	#box1 img {border: 2px solid green;}
+</style>
+</head>
+<body>
+<!-- 
+	block 요소 -> 영역이 한줄 전체 / width 적용 / 자동줄바꿈 (div, p, hn, ...)
+	inline 요소 -> 영역이 콘텐츠 만큼만 적용 / width 적용 안됨 / 줄바꿈안됨 (span, a , ...)
+ -->
+<div>
+	<span class="s1">반가워요</span>
+	<span class="s3">Bye~~~</span>
+	<span class="s2">hello</span>
+</div>
+<!-- 
+	padding : 안쪽 여백
+	margin : 바깥쪽 여백
+ -->
+<div id="box1">
+	<img src="images/1.jpg">
+</div>
+</body>
+</html>

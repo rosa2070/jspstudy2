@@ -19,7 +19,7 @@ public class MovieDao {
 	
 	private MovieDao() {}
 	
-	public static MovieDao getDao() {
+	public static MovieDao getInstance() {
 		return instance;
 	}
 	

@@ -16,7 +16,7 @@ public class CommentsDao {
 	
 	private CommentsDao() {}
 	
-	public static CommentsDao getDao() {
+	public static CommentsDao getInstance() {
 		return instance;
 	}
 	//delete메소드 만들어 보세요 - 트랜잭션 처리 하세요

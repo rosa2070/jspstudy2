@@ -41,6 +41,7 @@
 				commList.appendChild(div);
 				
 			}
+			
 
 		};
 		xhr.open('get', '/ajax01/comm/list?mnum=${vo.mnum}', true);

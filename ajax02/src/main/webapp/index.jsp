@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="/ajax02/main">영화정보</a>
+<a href="/ajax02/main">영화정보</a><br>
+<a href="/ajax02/3/sample.html">sample.html</a>
 </body>
 </html>

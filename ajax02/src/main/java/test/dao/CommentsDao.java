@@ -83,7 +83,7 @@ public class CommentsDao {
 		con = JdbcUtil.getCon();
 		
 		try {
-			String sql = "select * from comments where mnum = ?";
+			String sql = "select * from comments where mnum = ? order by num desc";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, mnum);
 			rs = pstmt.executeQuery();

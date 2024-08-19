@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/5/main.jsp</title>
+<title>/3/main.jsp</title>
 </head>
 <body>
 <h1>영화목록</h1>

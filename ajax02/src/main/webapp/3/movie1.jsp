@@ -1,0 +1,100 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>/5/movie.jsp</title>
+<style>
+.comm {
+	width: 400px;
+	height: 100px;
+	border: 1px solid #aaa;
+	margin: 5px;
+}
+</style>
+<script type="text/javascript">
+	function commList() {
+		fetch('/ajax02/comm/list?mnum=${vo.mnum}', {
+			method:'GET'
+		})
+		.then(response => response.json())
+		.then(data=> {
+			const commList = document.getElementById("commList");
+			const c_len = commList.childElementCount; // 댓글 수 구하기
+			const childs = commList.childNodes;
+			for (let i=c_len-1;i>=0;i--) {
+				let c = childs.item(i);
+				commList.removeChild(c);
+			}
+			data.list.forEach(comment => {
+				const html = "<div class='comm'>"
+					+ "번호:" + comment.num + "<br>"
+					+ "작성자:" + comment.id + "<br>"
+					+ "내용:" + comment.comments + "<br>"
+					+ "<a href='javascript:delComm(" + comment.num + ")'>삭제</a>" 
+				commList.innerHTML += html;
+			});
+			
+		});
+	}
+	
+	function delComm(num) { //삭제기능 완성하기
+		fetch('/ajax02/comm/delete?num=' + num) 
+		.then(response=>response.json())
+		.then(data => {
+			console.log(data);
+			if(data.code==true) {
+				alert('삭제성공!');
+				commList();
+			} else {
+				alert('삭제 실패');
+			}
+		});
+		
+	}
+	
+	function addComm() {
+		const id = document.getElementById("id").value;
+		const comments = document.getElementById("comments").value;
+		const param = "id=" + id + "&comments=" + comments + "&mnum=${vo.mnum}";
+		fetch('/ajax02/comm/insert', {
+			method:'POST',
+			headers:{'Content-Type':'application/x-www-form-urlencoded'},
+			body:param
+		})
+		.then(response=> response.json())
+		.then(data=> {
+			if(data.code==true) {
+				commList();
+			} else {
+				alert('댓글등록실패');
+			}
+		});
+	
+	}
+	window.onload = () => commList();
+</script>
+</head>
+<body>
+	<div style="width: 400px; height: 200px; background-color: #ccc">
+		<h1>${vo.title }</h1>
+		<p>
+			내용:${vo.content }<br> 감독:${vo.director }<br>
+		</p>
+	</div>
+	<div>
+		<!-- 댓글목록이 보여질 div -->
+		<div id="commList"></div>
+		<div id="commAdd">
+			아이디<br> <input type="text" id="id"><br> 영화평<br>
+			<textarea rows="3" cols="50" id="comments"></textarea>
+			<br>
+			<!--  댓글등록 해보세요.(응답을 json으로) -->
+			<input type="button" value="등록" onclick="addComm()">
+		</div>
+		<form enctype="application/x-www-form-urlencoded"></form>
+	</div>
+</body>
+</html>

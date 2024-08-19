@@ -19,6 +19,7 @@ public class MovieController extends HttpServlet{
 		MovieDao dao = MovieDao.getInstance();
 		MovieVo vo = dao.select(mnum);
 		request.setAttribute("vo", vo);
-		request.getRequestDispatcher("/3/movie.jsp").forward(request, response);
+		//request.getRequestDispatcher("/3/movie.jsp").forward(request, response);
+		request.getRequestDispatcher("/3/movie1.jsp").forward(request, response);
 	}
 }

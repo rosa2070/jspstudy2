@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+	$(function() {
+		$("#btn1").click(function() {
+			/* $.ajax({
+				url:'server/meminfo.jsp',
+				dataType:'json',
+				success:function(data) {
+					const html = "아이디:" + data.id + "<br>" + 
+								 "이름:" + data.name + "<br>" +
+								 "나이:" + data.age;
+					$("#result").html(html);
+				}
+			}); */
+			$.getJSON('server/meminfo.jsp', function(data) {
+				const html = "아이디:" + data.id + "<br>" +
+				             "이름:" + data.name + "<br>" +
+				             "나이:" + data.age;
+				$("#result").html(html);
+			});
+		});
+		
+		$("#btn2").click(function() {
+			$.getJSON('server/memlist.jsp', function(data) {
+				let html = '';
+				$.each(data, function(index, member) {
+					html += "<div>" + 
+							"아이디:" + member.id + "<br>" +
+							"비밀번호:" + member.pwd + "<br>" +
+							"나이:" + member.age +
+							"</div><br>";
+				});
+				$("#list").html(html);
+			});	
+		});
+	});
+</script>
+</head>
+<body>
+<button id="btn1">회원정보</button>
+<div id="result"></div>
+
+<!-- 버튼을 누르면 회원리스트 얻어와서 div#list에 출력해 보세요. -->
+<button id="btn2">회원리스트</button>
+<div id="list"></div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+오라클 18c xe
+https://www.oracle.com/database/technologies/xe18c-downloads.html
+-> password : java1234
+https://www.oracle.com/kr/datababse/technologies/appdev/jdbc-downloads.html
+
+create user c##java identified by c##java;
+grant dba to c##=java;

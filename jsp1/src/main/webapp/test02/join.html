@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>join.html</title>
+<style>
+	fieldset{width:300px;}
+</style>
+</head>
+<body>
+<h1>회원가입</h1> 
+<!-- 서블릿을 만들고 해당 서블릿에서 전달된 데이터를 출력해 보세요. -->
+<!-- 서블릿 경로는 localhost:8080/jsp1/join -->
+<!-- join.html 경로는 localhost:8080/jsp1/test02/join.html -->
+<!-- 그래서 상대경로는 ../join -->
+<form action="../join" method="post"> 
+	아이디 <input type="text" name="id"><br>
+	비밀번호 <input type="password" name="pwd"><br>
+	이메일 <input type="text" name="email"><br>
+	<input type="submit" value="가입">
+</form>
+</body>
+</html>

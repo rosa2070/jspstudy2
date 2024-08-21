@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	*{margin:0; padding:0}
+	#parent{width:700px;height:200px;background-color:orange;
+	position:relative;top:30px;left:200px;overflow:hidden;}/* 이미지 5개 보일 영역의 크기 (140px*5) */
+	#imgSlide{width:1400px;height:200px;position: absolute;left:0px;} /* 이미지 10개 영역 */
+	#imgSlide ul li {float:left;list-style:none;}
+	#imgSlide ul li img{width:136px; margin:2px; height:196px;}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+	$(document).ready(function() {
+		var n = 140;
+		setInterval(function() {
+			var n1 = parseInt($("#imgSlide").css("left")) - n;
+			$("#imgSlide").animate({left:n1}, 1000, function() {
+				if (n1<=-700) { //이미지가 다 이동된 경우
+					n=-140;	
+				} else if (n1>=0) {
+					n=140;
+				}
+			});
+		}, 2000);
+	});
+</script>
+</head>
+<body>
+	<div id="posterBox">
+		<div id="parent">
+			<div id="imgSlide">
+				<ul>
+					<li><img src="images/001.jpg"></li>
+					<li><img src="images/002.jpg"></li>
+					<li><img src="images/003.jpg"></li>
+					<li><img src="images/004.jpg"></li>
+					<li><img src="images/005.jpg"></li>
+					<li><img src="images/006.jpg"></li>
+					<li><img src="images/007.jpg"></li>
+					<li><img src="images/008.jpg"></li>
+					<li><img src="images/009.jpg"></li>
+					<li><img src="images/010.jpg"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

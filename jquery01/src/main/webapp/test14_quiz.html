@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test14_quiz.html</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+	$(function() {
+		$("#btn2").on('click', function() {
+			//let moveLeft = parseInt($("#img2").css("left")) + 50;
+			let moveLeft = $("#img2").position().left + 50;
+			$("#img2").animate({"left":moveLeft}, 400);
+		});
+		$("#btn1").one('click', function() {
+			var w = $("#img1").width()*2;
+			var h = $("#img1").height()*2;
+			
+			$("#img1").animate({
+				width: w,
+				height:h
+			}, 1000);
+		});
+	})
+</script>
+</head>
+<body>
+	<!--  btn2를 클릭하면 현재 위치에서 50px 이동해 보세요. -->
+	<input type="button" value="50px 이동" id="btn2"><br>
+	<img src="images/5.jpg" id="img2" style="position:relative;">
+	<pre>
+		버튼을 누르면 animate를 사용해서 이미지의 크기를 1초간 2배확대 해보세요.
+		이벤트가 딱 한번만 수행합니다.
+	</pre>
+	<input type="button" value="2배확대" id="btn1"><br>
+	<img src="images/3.jpg" id="img1">
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<input type="button" value="sample" id="btn1">
+<div id="result"></div>
+<script type="text/javascript">
+	document.getElementById("btn1").onclick=function() {
+		fetch("/ajax02/sample/fetch")
+		.then(function(data) {
+			console.log(data);
+			return data.json();
+		})
+		.then(function(mem){
+			console.log(mem);
+			const result = document.getElementById("result");
+			
+		});
+	}
+</script>
+</body>
+</html>

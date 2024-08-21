@@ -86,8 +86,11 @@
 		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		const id = document.getElementById("id").value;
 		const comments = document.getElementById("comments").value;
-		const param = "id=" + id + "&comments="
+		const param = "id=" + id + "&comments=" + comments + "&mnum=${vo.mnum}";
+		xhr.send(param);
 	}
+	
+	
 	window.onload = function() {
 		commList();
 	}
@@ -105,5 +108,13 @@
 </div>
 	<!-- 댓글목록이 보여질 div -->
 	<div id="commList"></div>
+	<div id="commAdd">
+		아이디<br>
+		<input type="text" id="id"><br>
+		영화평<br>
+		<textarea rows="3" cols="50" id="comments"></textarea><br>
+		<!--  댓글등록 해보세요.(응답을 json으로) -->
+		<input type="button" value="등록" onclick="addComm()">
+	</div>
 </body>
 </html>

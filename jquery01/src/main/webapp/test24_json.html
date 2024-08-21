@@ -27,15 +27,30 @@
 		
 		$("#btn2").click(function() {
 			$.getJSON('server/memlist.jsp', function(data) {
-				let html = '';
-				$.each(data, function(index, member) {
-					html += "<div>" + 
-							"아이디:" + member.id + "<br>" +
-							"비밀번호:" + member.pwd + "<br>" +
-							"나이:" + member.age +
-							"</div><br>";
+				
+/* 				$(data).each(function(i, mem) {
+					const html ="아이디:" + mem.id + "<br>" +
+								"비밀번호:" + mem.pwd + "<br>" +
+								"나이:" + mem.age + "<br>";
+					$("#list").append(i + "<br>" + html);
+				}); */
+				
+				/* for(let i=0; i<data.length;i++) {
+					const id = data[i].id;
+					const pwd = data[i].pwd;
+					const age = data[i].age;
+					const html = "아이디:" + id + "<br>" + 
+						"비밀번호:" + pwd + "<br>" + 
+						"나이:" + age + "<br>";
+					$("#list").append(html);
+				} */
+				
+				$.each(data, function(i, mem) {
+					const html = "id:" + mem.id + "<br>" +
+								"password:" + mem.pwd + "<br>" +
+								"age:" + mem.age + "<br>";
+					$("#list").append(i + "<br>" + html);
 				});
-				$("#list").html(html);
 			});	
 		});
 	});

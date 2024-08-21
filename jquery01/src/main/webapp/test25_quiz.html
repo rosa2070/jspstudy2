@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+	$(function() {
+		$("#btn1").click(function(e) {
+			e.preventDefault(); 
+			
+			const email = $("input[name='email']").val();
+			const password = $("input[name='pwd']").val();
+			
+			$.getJSON('server/findid.jsp', {email: email, pwd:password}, function(data) {
+				const span = $("#result");
+				if (data.userid) {
+					const html = "아이디는 " + data.userid + "입니다.";
+					span.html(html);
+				} else {
+					span.html("해당 아이디가 존재하지 않습니다.");
+				}
+			});
+		});
+	})
+</script>
+</head>
+<body>
+<!-- 이메일과 비밀번호를 입력받아 해당 아이디 조회하기(json사용)
+	공유폴더 -> 퀴즈 -> 0821 -> 과제폴더에 코드 올리세요.
+ -->
+ <h1>아이디찾기</h1>
+ <form action="post" action="findid.jsp">
+ 	이메일 <input type="text" name="email"><br>
+ 	비밀번호 <input type="password" name="pwd"><br>
+ 	<input type="submit" value="아이디찾기" id="btn1">
+ </form>
+ <div id="result"></div>
+</body>
+</html>

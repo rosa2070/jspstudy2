@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test26_load.html</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+	$(function() {
+/* 		$.get('server/movieList.jsp', function(data) {			
+			$("#movielist").html(data);
+		}, 'html'); */
+		
+/* 		$.ajax({
+			url:'/jquery01/server/movieList.jsp',
+			dataType:'html',
+			success:function(data) {
+				$("#movielist").html(data);
+			}
+		}); */
+		
+		$("#movielist").load('/jquery01/server/movieList.jsp');
+		$("a").click(function(e) {
+			e.preventDefault();		
+			let url=$(this).prop('href');
+			$("#movieinfo").load(url);
+			//return false;
+			
+		});
+	})
+</script> 
+</head>
+
+<body>
+	<h1>우리우리 영화관</h1>
+	<!--  a태그를 클릭하면 링크에 연결된 페이지를 ajax를 사용해서 div에 보이도록 해보세요. -->
+	<a href="/jquery01/server/movie1.jsp">최근 상영작</a> | <a href="/jquery01/server/movie2.jsp">상영 예정작</a>
+	<div id="movieinfo"></div><br><br><br><br>
+	
+	<!--  페이지가 로딩되면 인기상영작을 ajax로 불러와 div에 보여지도록 해보세요. -->
+	<div id="movielist"></div>
+	
+</body>
+</html>

@@ -21,7 +21,7 @@ public class CommDeleteController extends HttpServlet {
 		CommentsDao dao = CommentsDao.getInstance();
 		int n = dao.delete(num);
 		
-		resp.setContentType("text/xml;charset=utf-8");
+		resp.setContentType("text/json;charset=utf-8");
 		PrintWriter pw = resp.getWriter();
 		JSONObject result = new JSONObject();
 		if (n>0) {

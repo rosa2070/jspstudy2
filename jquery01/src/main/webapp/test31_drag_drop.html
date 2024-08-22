@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>test30_dialog.html</title>
+   <style>
+   	*{margin:0px; padding:0px;}
+   	#wrap{width:100%; height:300px; background-color: orange;}
+   	#dock{width:100%; height:120px; position: fixed; bottom:0px; background-color:pink;}
+   	#wrap div {float:left;}
+   	.item {margin:3px; padding: 5px;}
+   	.item img {width:100px; height:100px; border-radius:8px; border:3px solid green; background-color: white}
+   	#dock div{float: left;}
+   </style>
+   <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+   <link rel="stylesheet" href="/resources/demos/style.css">
+   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+   <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+
+</head>
+<body>
+	<div id="wrap"></div>
+	<div id="dock"></div>
+	<script>
+		for (let i=1; i<=20; i++) {
+			let icon="<div class='item'><img src='images/" + i + ".jpg'></div>";
+			$("#wrap").append(icon);
+		}
+		$("#wrap div").draggable({
+			helper:'clone',
+			scroll:false,
+			zIndex:999
+		});
+		$("#dock").droppable({
+			drop:function(e, ui) {
+				//ui.draggable : 드래그해온 객체
+				$(ui.draggable).fadeOut(function() {
+					$(this).appendTo("#dock").fadeIn();
+				});	
+			}
+		});
+		//#dock에서 #wrap으로 드래그드롭 할 수 있도록 해보세요.
+		$("#wrap").droppable({
+			drop:function(e, ui) {
+				$(ui.draggable).fadeOut(function() {
+					$(this).appendTo("#wrap").fadeIn();
+				})
+			}
+		});
+	</script>
+</body>
+</html>

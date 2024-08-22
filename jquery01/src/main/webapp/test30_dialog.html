@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>test30_dialog.html</title>
+   <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+   <link rel="stylesheet" href="/resources/demos/style.css">
+   <style>
+   	   body{font-size: 0.8em;}
+   	   h1{text-align: center;}
+   	   input[type='text'], label{margin-bottom: 12px; padding: 0.4em; width:95%;}
+   </style>
+   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+   <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+
+</head>
+<body>
+	<div id="dlg" title="나의 다이얼로그">
+		<p>
+			우리 국민 10명 중 7명은 뉴스를 회피하고 있다는 조사 결과가 나왔다. 뉴스 회피를 빚는 주된 상황은 ‘정치적인 사건, 이슈들이 너무 많을 때’, ‘반복적으로 너무 많은 뉴스가 쏟아져 나올 때’, ‘보고 싶지 않은 인물이 뉴스에 나올 때’ 등이 꼽혔다.
+		</p>
+		
+	</div>
+	<h1 id="open_dlg">일정생성</h1>
+		<hr>
+		<div id="list"></div>
+		<div id="dlg1" title="일정">
+			<h1>일정정보입력</h1>
+			<label for="ename">일정이름</label>
+			<input type="text" id="ename">
+			<label for="edate">일정날짜</label>
+			<input type="text" id="edate">
+		</div>
+		
+	<script>
+		$(function() {
+			//$("#dlg").dialog();
+			$("#edate").datepicker();
+			$("#dlg1").dialog({
+				autoOpen:false,
+				buttons:{
+					저장:function() {
+						// 일정정보를 입력하고 저장버튼을 누르면 div#list에 일정정보가 추가되도록 해보세요
+						const ename = $("#ename").val();
+						const edate = $("#edate").val();
+						$("div#list").append("<p>" + ename + ":" + edate + "</p>");
+					},
+					닫기:function() {
+						$("#dlg1").dialog('close'); //다이얼로그 닫기
+					}
+				}
+			});
+			$("#open_dlg").click(function() {
+				$("#dlg1").dialog('open');
+			});
+		});
+	</script>
+</body>
+</html>

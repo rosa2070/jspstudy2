@@ -6,13 +6,16 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
 	$(function() {
-		$("#btn1").click(function(e) {
+		$("form").submit(function(e) {
 			e.preventDefault(); 
 			
-			const email = $("input[name='email']").val();
-			const password = $("input[name='pwd']").val();
+			//const email = $("input[name='email']").val();
+			//const password = $("input[name='pwd']").val();
+			// "email=" + email + "&pwd=" + password
+			const param=$(this).serialize();
 			
-			$.getJSON('server/findid.jsp', {email: email, pwd:password}, function(data) {
+			
+			$.getJSON('server/findid.jsp', param, function(data) {
 				const span = $("#result");
 				if (data.userid) {
 					const html = "아이디는 " + data.userid + "입니다.";
@@ -30,7 +33,7 @@
 	공유폴더 -> 퀴즈 -> 0821 -> 과제폴더에 코드 올리세요.
  -->
  <h1>아이디찾기</h1>
- <form action="post" action="findid.jsp">
+ <form method="post" action="findid.jsp">
  	이메일 <input type="text" name="email"><br>
  	비밀번호 <input type="password" name="pwd"><br>
  	<input type="submit" value="아이디찾기" id="btn1">

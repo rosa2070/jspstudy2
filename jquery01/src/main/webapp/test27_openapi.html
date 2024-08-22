@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test27_openapi.html</title>
+<style>
+	#booklist div {
+		width:850px;
+		height:220px;
+		border:3px solid #aaa;
+		padding:10px;
+		margin:5px;
+	}
+</style>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+	$(function() {
+		let start = 1;
+		$("#btn_search").click(function() {
+			$("#booklist").empty();
+			const search = $("#search").val();
+			$.ajax({
+				url:'server/naver_search.jsp',
+				data: {"search":search, "start":1},
+				success:function(result) {
+					//alert(result);
+					$(result).find("item").each(function() {
+						const title = $(this).find("title").text();
+						const discount = $(this).find('discount').text();
+						const img = $(this).find("image").text();
+						const str = "<div>" +
+									"<h3>" + title + "</h3>" +
+									"가격:" + discount + "<br>" +
+									"<img src='" + img + "' style='width:100px;height:130px'>" + 
+									"</div>"
+						$("#booklist").append(str);
+									
+					})
+				}
+			})
+		});
+		
+		$("#btn_more").click(function() {
+			start += 5;
+			var search = $("#search").val();
+			$.ajax({
+				url:'server/naver_search.jsp',
+				data: {"search":search, "start":start},
+				success:function(result) {
+					// alert(result);
+					$(result).find("item").each(function() {
+						const title = $(this).find("title").text();
+						const discount = $(this).find("discount").text();
+						const img = $(this).find("image").text();
+						const str = "<div>" + 
+									"<h3>" + title + "</h3>" + 
+									"가격:" + discount + "<br>" +
+									"<img src='" + img + "' style='width:100px; height:130px'>" +
+									"</div>"
+						$("#booklist").append(str);
+					});
+					let h = $(document).height();
+					$(window).scrollTop(h);
+				}
+			});
+			
+			
+		})
+
+	});
+</script>
+</head>
+<body>
+<div id="contents">
+	<h1>도서검색</h1>
+	검색어 <input type="text" id="search" value="자바">
+	<input type="button" value="찾기" id="btn_search">
+	<div id="booklist"></div>	
+</div>
+<p>
+	<input type="button" value="더보기" id="btn_more">
+</p>
+</body>
+</html>

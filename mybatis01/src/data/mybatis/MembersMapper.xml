@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mybatis.MembersMapper">
+	<insert id="join" parameterType="test.dto.Members">
+		insert into members
+		values (#{num}, #{name}, #{phone}, #{addr}, sysdate)
+	</insert>
+	<delete id="remove" parameterType="int">
+		delete from members where num=#{num}
+	</delete>
+	<update id="edit" parameterType="test.dto.Members">
+		update members 
+		set name=#{name}, phone=#{phone}, addr = #{addr} 
+		where num=#{num}
+	</update>
+	<select id="selectAll" resultType="test.dto.Members">
+		select * from members
+	</select>
+	<select id="getinfo" resultType="test.dto.Members" parameterType="int">
+		select * from members where num=#{num}
+	</select>
+</mapper>

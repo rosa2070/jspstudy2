@@ -84,7 +84,9 @@
 		<!-- 댓글목록이 보여질 div -->
 		<div id="commList"></div>
 		<div id="commAdd">
-			아이디<br> <input type="text" id="id"><br> 영화평<br>
+			아이디<br> 
+			<input type="text" id="id"><br> 
+			영화평<br>
 			<textarea rows="3" cols="50" id="comments"></textarea>
 			<br>
 			<!-- 댓글 등록 버튼 -->

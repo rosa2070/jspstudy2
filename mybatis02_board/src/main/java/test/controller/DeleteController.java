@@ -22,12 +22,8 @@ public class DeleteController extends HttpServlet {
 		
 		
 		try {
-			int n = dao.delete(num);
-			if (n>0) {
-				req.setAttribute("result", "success");
-			} else {
-				req.setAttribute("result", "fail");
-			}
+			dao.delete(num);
+			req.setAttribute("result", "success");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			req.setAttribute("result", "fail");

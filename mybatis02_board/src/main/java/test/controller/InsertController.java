@@ -29,7 +29,7 @@ public class InsertController extends HttpServlet {
 		
 		// n에 대한 if문 안써도 동작?? n이 0보다 크다던지...
 		try {
-			int n = dao.insert(vo);
+			dao.insert(vo);
 			req.setAttribute("result", "success");
 		} catch(Exception e) {
 			System.out.println(e.getMessage());

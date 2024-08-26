@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.MovieMapper">
+<!-- resultMap : select로 조회된 결과를 VO객체에 어떻게 담을건지 정의 -->
+	<resultMap type="test.vo.MovieCommentsVo" id="commentsList">
+		<result column="mnum" property="mnum"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="director" property="director"/>
+		<collection property="commList" ofType="test.vo.CommentsVo">
+			<result column="num" property="num"/>
+			<result column="mnum" property="mnum"/>
+			<result column="id" property="id"/>
+			<result column="comments" property="comments"/>
+		</collection>
+	</resultMap>
+	<select id="commList2" resultMap="commentsList">
+		select m.mnum, m.title, m.content, m.director, c.num, c.id, c.comments
+		from movie m, comments c
+		where m.mnum = c.mnum
+	</select>
+	
+	<select id="commList1" resultType="hashmap">
+		select m.mnum, m.title, m.content, m.director, c.num, c.id, c.comments
+		from movie m, comments c
+		where m.mnum = c.mnum
+	</select>
+</mapper>

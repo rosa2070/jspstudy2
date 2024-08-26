@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="oracle.jdbc.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+        <property name="username" value="c##java"/>
+        <property name="password" value="c##java"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <!-- 읽어올 Mapper XML 파일 포함하기 -->
+    <mapper resource="mybatis/MovieMapper.xml"/>
+    <!-- Mapper인터페이스 등록하기 -->
+    <mapper class="test.dao.MovieMapper"/>
+    <mapper class="test.dao.MembersMapper"/>
+    <!-- 
+    <mapper resource="org/mybatis/example/BlogMapper.xml"/>	
+     --> 
+  </mappers>
+</configuration>
+
+
+
+

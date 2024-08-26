@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.BoardMapper">
+	<!-- insert -->
+	<insert id="insert" parameterType="board">
+		insert into mboard 
+		values(mboard_seq.nextval,#{writer},#{title},#{content},sysdate)
+	</insert>
+	<!-- selectList -->
+	<select id="selectList" resultType="board" parameterType="hashmap">
+		select * from mboard 
+		<if test="field!= null">
+			where ${field} like '%'||#{keyword}||'%'		
+		</if>
+	</select>
+	
+	<!-- delete -->
+
+	<!-- selectOne -->
+	<select id="selectOne" parameterType="int" resultType="board">
+		select * from mboard where num=#{num}
+	</select>
+	
+	<!-- update -->
+	<update id="update" parameterType="board">
+		update mboard
+		set writer=#{writer},title=#{title},content=#{content}
+		where num=#{num}
+	</update>
+	
+	<select id="searchList" parameterType="hashmap" resultType="board">
+		select * from mboard
+		<where>
+			<if test="writer!=null">
+				writer like '%'||#{keyword}||'%'
+			</if>
+			<if test="title!=null">
+				or title like '%'||#{keyword}||'%'
+			</if>
+			<if test="content!=null">
+				or content like '%'||#{keyword}||'%'
+			</if>
+		</where>
+		
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
